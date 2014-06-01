@@ -13,7 +13,7 @@ class BuildMain $(CSLB){
 	
 	static public function main() {
 		var player = new Teplayer(
-			"bin", "skin", 
+			"bin", "resource", 
 			{
 				title : "$(ProjectName)",
 				HtmlWriter : HtmlWriter,
