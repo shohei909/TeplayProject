@@ -1,0 +1,8 @@
+-lib teplay
+-cp src
+--macro BuildMain.main()
+
+--next
+-js bin/main.js
+-cp src
+-main JavaScriptMain

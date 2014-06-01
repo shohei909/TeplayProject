@@ -1,0 +1,45 @@
+package;
+
+import teplay.Teplayer;
+import teplay.plugin.PygmentsPlugin;
+import teplay.plugin.RedcarpetPlugin;
+import teplay.plugin.SassPlugin;
+import $(PackageDot)common.HtmlWriter;
+import $(PackageDot)common.Config;
+
+/**
+$(CBI)* ...
+$(CBI)* @author $(DefaultUser)
+$(CBI)*/
+
+class BuildMain $(CSLB){
+	
+	static public var pythonDir				= "$(PythonDir)";
+	static public var rubyDir				= "$(RubyDir)";
+	static public var redcarpetArgs 		= ["--render-hard-wrap", "--render-xhtml", "--parse-fenced-code-blocks", "--parse-tables"];
+	static public var sassArgs				= ["--style", "compressed", "--no-cache", "--trace"];
+	
+	static public function main() {
+		var player = new Teplayer(
+			"bin", "skin", 
+			{
+				title : "$(ProjectName)",
+				HtmlWriter : HtmlWriter,
+				page : Config.page,
+				menu : Config.menu,
+				scripts : Config.scripts,
+				styleSheets : Config.styleSheets,
+			}
+		);
+		
+		var articles = player.getArticleList("_internal/article");
+		player.addBranch("article", articles);
+		
+		player.addPlugin(new RedcarpetPlugin(rubyDir, redcarpetArgs));
+		player.addPlugin(new SassPlugin(rubyDir, sassArgs));
+		player.addPlugin(new PygmentsPlugin(pythonDir));
+		
+		player.play();
+	}
+	
+}

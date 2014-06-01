@@ -1,0 +1,12 @@
+package;
+
+/**
+$(CBI)* ...
+$(CBI)* @author $(DefaultUser)
+$(CBI)*/
+
+class JavaScriptMain $(CSLB){
+	static public function main() $(CSLB){
+		
+	}
+}

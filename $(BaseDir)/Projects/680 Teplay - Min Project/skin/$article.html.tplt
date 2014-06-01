@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		%%include("_internal/head.html")%%
+	</head>
+	<body>
+		%%
+			var dir = relative("");
+			HtmlWriter.menu(dir, branch.article);
+		%%
+		<div id="article">
+			%%include(format("_internal/article/${article.file}.html"))%%
+		</div>
+	</body>
+</html>

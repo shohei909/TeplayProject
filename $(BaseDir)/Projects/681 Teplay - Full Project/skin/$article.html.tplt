@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+	<head>%%include("_internal/head.html")%%</head>
+	<body>
+		<div id="content">
+			<h1>%%title%%</h1>
+			%%
+				var dir = relative("");
+				HtmlWriter.menu(dir, branch.article)
+			%%
+			<div id="article">
+				%%include(format("_internal/article/${article.file}.html"))%%
+			</div>
+			%%HtmlWriter.pageLink(dir, branch.article)%%
+		</div>
+		<div id="footer">Copyright (c) ...</div>
+	</body>
+</html>
